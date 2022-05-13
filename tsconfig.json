@@ -21,7 +21,8 @@
     "downlevelIteration": true,
     "incremental": true,
     "paths": {
-      "@pancakeswap/uikit": ["../packages/uikit/src/index.ts"]
+      "@pancakeswap/uikit": ["../packages/uikit/src/index.ts"],
+      "@uiKit": ["../src/uikit/index.ts"],
     }
   },
   "exclude": ["node_modules", "cypress"],

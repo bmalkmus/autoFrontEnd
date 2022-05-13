@@ -14,6 +14,8 @@ const useTokenBalance = (tokenAddress: string) => {
   const { account } = useWeb3React()
 
   const contract = useTokenContract(tokenAddress, false)
+  // eslint-disable-next-line no-console
+  console.log('useTokenBalance contract', contract)
   const { data, status, ...rest } = useSWRContract(
     account
       ? {

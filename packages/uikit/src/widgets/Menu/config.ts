@@ -28,108 +28,108 @@ export const status = {
 };
 
 export const links: MenuItemsType[] = [
-  {
-    label: "Trade",
-    href: "/swap",
-    icon: SwapIcon,
-    fillIcon: SwapFillIcon,
-    items: [
-      {
-        label: "Exchange",
-        href: "/swap",
-      },
-      {
-        label: "Liquidity",
-        href: "/liquidity",
-      },
-      {
-        label: "Charts",
-        href: "/charts",
-        iconName: "Chart",
-        isMobileOnly: true,
-      },
-    ],
-  },
-  {
-    label: "Earn",
-    href: "/earn",
-    icon: EarnIcon,
-    fillIcon: EarnFillIcon,
-    items: [
-      {
-        label: "Earn",
-        href: "/earn",
-      },
-      {
-        label: "Yield Farms",
-        href: "/farms",
-      },
-      {
-        label: "Syrup pools",
-        href: "/pools",
-      },
-    ],
-  },
-  {
-    label: "Win",
-    href: "/",
-    icon: TrophyIcon,
-    fillIcon: TrophyFillIcon,
-    items: [
-      {
-        label: "Win",
-        href: "/",
-      },
-      {
-        label: "Predictions",
-        href: "/",
-        status: status.LIVE,
-      },
-      {
-        label: "Lottery",
-        href: "/",
-      },
-    ],
-  },
-  {
-    label: "",
-    href: "/",
-    icon: MoreIcon,
-    items: [
-      {
-        label: "Info & Analytics",
-        href: "/",
-      },
-      {
-        label: "IFO Token Sales",
-        href: "/",
-        status: status.SOON,
-      },
-      {
-        type: DropdownMenuItemType.DIVIDER,
-      },
-      {
-        label: "NFT Collectibles",
-        href: "/",
-      },
-      {
-        label: "Team Leaderboard",
-        href: "/",
-      },
-      {
-        type: DropdownMenuItemType.DIVIDER,
-      },
-      {
-        label: "Blog",
-        href: "/",
-      },
-      {
-        label: "Docs & Guides",
-        href: "/",
-        type: DropdownMenuItemType.EXTERNAL_LINK,
-      },
-    ],
-  },
+  // {
+  //   label: "Trade",
+  //   href: "/swap",
+  //   icon: SwapIcon,
+  //   fillIcon: SwapFillIcon,
+  //   items: [
+  //     {
+  //       label: "Exchange",
+  //       href: "/swap",
+  //     },
+  //     {
+  //       label: "Liquidity",
+  //       href: "/liquidity",
+  //     },
+  //     {
+  //       label: "Charts",
+  //       href: "/charts",
+  //       iconName: "Chart",
+  //       isMobileOnly: true,
+  //     },
+  //   ],
+  // },
+  // {
+  //   label: "Earn",
+  //   href: "/earn",
+  //   icon: EarnIcon,
+  //   fillIcon: EarnFillIcon,
+  //   items: [
+  //     {
+  //       label: "Earn",
+  //       href: "/earn",
+  //     },
+  //     {
+  //       label: "Yield Farms",
+  //       href: "/farms",
+  //     },
+  //     {
+  //       label: "Sticky Icky",
+  //       href: "/pools",
+  //     },
+  //   ],
+  // },
+  // {
+  //   label: "Win",
+  //   href: "/",
+  //   icon: TrophyIcon,
+  //   fillIcon: TrophyFillIcon,
+  //   items: [
+  //     {
+  //       label: "Win",
+  //       href: "/",
+  //     },
+  //     {
+  //       label: "Predictions",
+  //       href: "/",
+  //       status: status.LIVE,
+  //     },
+  //     {
+  //       label: "Lottery",
+  //       href: "/",
+  //     },
+  //   ],
+  // },
+  // {
+  //   label: "",
+  //   href: "/",
+  //   icon: MoreIcon,
+  //   items: [
+  //     {
+  //       label: "Info & Analytics",
+  //       href: "/",
+  //     },
+  //     {
+  //       label: "IFO Token Sales",
+  //       href: "/",
+  //       status: status.SOON,
+  //     },
+  //     {
+  //       type: DropdownMenuItemType.DIVIDER,
+  //     },
+  //     {
+  //       label: "NFT Collectibles",
+  //       href: "/",
+  //     },
+  //     {
+  //       label: "Team Leaderboard",
+  //       href: "/",
+  //     },
+  //     {
+  //       type: DropdownMenuItemType.DIVIDER,
+  //     },
+  //     {
+  //       label: "Blog",
+  //       href: "/",
+  //     },
+  //     {
+  //       label: "Docs & Guides",
+  //       href: "/",
+  //       type: DropdownMenuItemType.EXTERNAL_LINK,
+  //     },
+  //   ],
+  // },
 ];
 
 export const userMenulinks: DropdownMenuItems[] = [

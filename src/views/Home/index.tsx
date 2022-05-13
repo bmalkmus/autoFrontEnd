@@ -16,6 +16,7 @@ import CakeDataRow from './components/CakeDataRow'
 import { WedgeTopLeft, InnerWedgeWrapper, OuterWedgeWrapper, WedgeTopRight } from './components/WedgeSvgs'
 import UserBanner from './components/UserBanner'
 import MultipleBanner from './components/Banners/MultipleBanner'
+import Cryptos from '../Cryptos'
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
@@ -43,11 +44,14 @@ const UserBannerWrapper = styled(Container)`
 
 const Home: React.FC = () => {
   const { theme } = useTheme()
-  const { account } = useWeb3React()
+  const { account, chainId } = useWeb3React()
 
   const HomeSectionContainerStyles = { margin: '0', width: '100%', maxWidth: '968px' }
 
   const { t } = useTranslation()
+
+  // eslint-disable-next-line no-console
+  console.log(chainId)
 
   return (
     <>
@@ -67,10 +71,10 @@ const Home: React.FC = () => {
             <UserBanner />
           </UserBannerWrapper>
         )}
-        <MultipleBanner />
-        <Hero />
+        {/* <MultipleBanner /> */}
+        {/* <Hero /> */}
       </StyledHeroSection>
-      <PageSection
+      {/* <PageSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         background={
           theme.isDark
@@ -108,8 +112,8 @@ const Home: React.FC = () => {
         </OuterWedgeWrapper>
         <SalesSection {...earnSectionData(t)} />
         <FarmsPoolsRow />
-      </PageSection>
-      <PageSection
+      </PageSection> */}
+      {/* <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={
           theme.isDark
@@ -120,24 +124,24 @@ const Home: React.FC = () => {
         hasCurvedDivider={false}
       >
         <WinSection />
-      </PageSection>
+      </PageSection> */}
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.background}
         index={2}
         hasCurvedDivider={false}
       >
-        <SalesSection {...cakeSectionData(t)} />
-        <CakeDataRow />
+        {/* <SalesSection {...cakeSectionData(t)} /> */}
+        <Cryptos />
       </PageSection>
-      <PageSection
+      {/* <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background="linear-gradient(180deg, #7645D9 0%, #5121B1 100%)"
         index={2}
         hasCurvedDivider={false}
       >
         <Footer />
-      </PageSection>
+      </PageSection> */}
     </>
   )
 }
