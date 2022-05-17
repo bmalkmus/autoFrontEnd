@@ -3,6 +3,7 @@ import { Button, AutoRenewIcon, Box, Flex } from '@pancakeswap/uikit'
 import _noop from 'lodash/noop'
 import { useTranslation } from 'contexts/Localization'
 import { MAX_LOCK_DURATION } from 'config/constants/pools'
+import useTokenBalance from 'hooks/useTokenBalance'
 import { getBalanceAmount } from 'utils/formatBalance'
 
 import { LockedModalBodyPropsType, ModalValidator } from '../types'
@@ -29,13 +30,15 @@ const LockedModalBody: React.FC<LockedModalBodyPropsType> = ({
     prepConfirmArg,
   })
 
+  const { balance: cakeBalance, fetchStatus: cakeFetchStatus } = useTokenBalance(stakingToken.address)
+
   const { isValidAmount, isValidDuration, isOverMax }: ModalValidator = useMemo(() => {
     return typeof validator === 'function'
       ? validator({
           duration,
         })
       : {
-          isValidAmount: lockedAmount?.toNumber() > 0 && getBalanceAmount(currentBalance).gte(lockedAmount),
+          isValidAmount: lockedAmount?.toNumber() > 0 && getBalanceAmount(cakeBalance).gte(lockedAmount),
           isValidDuration: duration > 0 && duration <= MAX_LOCK_DURATION,
           isOverMax: duration > MAX_LOCK_DURATION,
         }

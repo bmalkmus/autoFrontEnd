@@ -8,10 +8,11 @@ const selectPoolData = (sousId) => (state: State) => state.pools.data.find((p) =
 const selectUserDataLoaded = (state: State) => state.pools.userDataLoaded
 const selectVault = (key: VaultKey) => (state: State) => key ? state.pools[key] : initialPoolVaultState
 
-export const makePoolWithUserDataLoadingSelector = (sousId) =>
+export const makePoolWithUserDataLoadingSelector = (sousId) => 
   createSelector([selectPoolData(sousId), selectUserDataLoaded], (pool, userDataLoaded) => {
     return { pool: transformPool(pool), userDataLoaded }
   })
+
 
 export const poolsWithUserDataLoadingSelector = createSelector(
   [selectPoolsData, selectUserDataLoaded],

@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Modal, Box } from '@pancakeswap/uikit'
 import useTheme from 'hooks/useTheme'
-import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
+// import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
 import { useTranslation } from 'contexts/Localization'
 import _toNumber from 'lodash/toNumber'
 import BigNumber from 'bignumber.js'
-
+import useTokenBalance from 'hooks/useTokenBalance'
 import { GenericModalProps } from '../types'
 import BalanceField from '../Common/BalanceField'
 import LockedBodyModal from '../Common/LockedModalBody'
@@ -19,9 +19,11 @@ const LockedStakeModal: React.FC<GenericModalProps> = ({
 }) => {
   const { theme } = useTheme()
   const [lockedAmount, setLockedAmount] = useState('0')
+  // const [balance, setBalance] =useState(currentBalance)
   const { t } = useTranslation()
-
-  const usdValueStaked = useBUSDCakeAmount(_toNumber(lockedAmount))
+  const { balance: cakeBalance, fetchStatus: cakeFetchStatus } = useTokenBalance(stakingToken.address)
+  const usdValueStaked = 0
+  // const usdValueStaked = useBUSDCakeAmount(_toNumber(lockedAmount))
 
   return (
     <RoiCalculatorModalProvider lockedAmount={lockedAmount}>
@@ -33,7 +35,7 @@ const LockedStakeModal: React.FC<GenericModalProps> = ({
             stakingDecimals={stakingToken.decimals}
             lockedAmount={lockedAmount}
             usedValueStaked={usdValueStaked}
-            stakingMax={currentBalance}
+            stakingMax={cakeBalance}
             setLockedAmount={setLockedAmount}
             stakingTokenBalance={stakingTokenBalance}
           />

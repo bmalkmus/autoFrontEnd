@@ -7,6 +7,7 @@ import { getCakeContract } from 'utils/contractHelpers'
 
 const cakeVaultV2 = getCakeVaultAddress()
 const cakeContract = getCakeContract()
+
 export const fetchPublicVaultData = async (cakeVaultAddress = cakeVaultV2) => {
   try {
     const calls = ['getPricePerFullShare', 'totalShares', 'totalLockedAmount'].map((method) => ({

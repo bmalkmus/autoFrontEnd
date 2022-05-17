@@ -2,6 +2,7 @@ import React, { useState, createContext } from 'react'
 import { useTranslation } from 'contexts/Localization'
 import { usePool } from 'state/pools/hooks'
 import _toString from 'lodash/toString'
+import {vaultPool} from '../../../vaultPool'
 
 import { VaultRoiCalculatorModal } from '../../Vault/VaultRoiCalculatorModal'
 
@@ -14,7 +15,8 @@ const RoiCalculatorModalProvider: React.FC<{ children: React.ReactNode; lockedAm
   const [showRoiCalculator, setShowRoiCalculator] = useState(false)
   const { t } = useTranslation()
   // Get Vault pool
-  const { pool } = usePool(0)
+  // const { pool } = usePool(0)
+  const pool = vaultPool
 
   const stakingTokenAddress = pool?.stakingToken?.address ? pool.stakingToken.address.toLowerCase() : null
 

@@ -48,6 +48,9 @@ export function useVaultApy({ duration = MAX_LOCK_DURATION }: { duration?: numbe
     fees: { performanceFeeAsDecimal } = { performanceFeeAsDecimal: DEFAULT_PERFORMANCE_FEE_DECIMALS },
   } = useCakeVault()
 
+  // eslint-disable-next-line no-console
+
+
   const totalSharesAsEtherBN = useMemo(() => FixedNumber.from(totalShares.toString()), [totalShares])
   const pricePerFullShareAsEtherBN = useMemo(() => FixedNumber.from(pricePerFullShare.toString()), [pricePerFullShare])
 
@@ -74,10 +77,13 @@ export function useVaultApy({ duration = MAX_LOCK_DURATION }: { duration?: numbe
     const cakePoolSharesInSpecialFarms = FixedNumber.from(cakePoolInfo.allocPoint).divUnsafe(
       FixedNumber.from(totalSpecialAllocPoint),
     )
+    // eslint-disable-next-line no-console
+    console.log("RESPONSES", specialFarmsPerBlock, cakePoolInfo, totalSpecialAllocPoint)
     return FixedNumber.from(specialFarmsPerBlock)
       .mulUnsafe(FixedNumber.from(BLOCKS_PER_YEAR))
       .mulUnsafe(cakePoolSharesInSpecialFarms)
   })
+  
 
   const flexibleApy = useMemo(
     () =>
@@ -87,6 +93,7 @@ export function useVaultApy({ duration = MAX_LOCK_DURATION }: { duration?: numbe
       getFlexibleApy(totalCakePoolEmissionPerYear, pricePerFullShareAsEtherBN, totalSharesAsEtherBN).toString(),
     [pricePerFullShareAsEtherBN, totalCakePoolEmissionPerYear, totalSharesAsEtherBN],
   )
+
 
   const boostFactor = useMemo(() => _getBoostFactor(BOOST_WEIGHT, duration, DURATION_FACTOR), [duration])
 

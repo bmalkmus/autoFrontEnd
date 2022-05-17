@@ -18,8 +18,6 @@ import tokens from 'config/constants/tokens'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { simpleRpcProvider } from 'utils/providers'
 import priceHelperLpsConfig from 'config/constants/priceHelperLps'
-import fetchFarms from '../farms/fetchFarms'
-import getFarmsPrices from '../farms/getFarmsPrices'
 import {
   fetchPoolsBlockLimits,
   fetchPoolsProfileRequirement,
@@ -76,7 +74,7 @@ const cakeVaultAddress = getCakeVaultAddress()
 export const fetchCakePoolPublicDataAsync = () => async (dispatch, getState) => {
   const farmsData = getState().farms.data
   const prices = getTokenPricesFromFarm(farmsData)
-
+  console.log('prices', prices)
   const cakePool = poolsConfig.filter((p) => p.sousId === 0)[0]
 
   const stakingTokenAddress = cakePool.stakingToken.address ? cakePool.stakingToken.address.toLowerCase() : null
@@ -146,18 +144,18 @@ export const fetchPoolsPublicDataAsync = (currentBlockNumber: number) => async (
           }).length > 0
       )
     })
-    const poolsWithDifferentFarmToken =
-      activePriceHelperLpsConfig.length > 0 ? await fetchFarms(priceHelperLpsConfig) : []
-    const farmsData = getState().farms.data
-    const bnbBusdFarm =
-      activePriceHelperLpsConfig.length > 0
-        ? farmsData.find((farm) => farm.token.symbol === 'BUSD' && farm.quoteToken.symbol === 'WBNB')
-        : null
-    const farmsWithPricesOfDifferentTokenPools = bnbBusdFarm
-      ? getFarmsPrices([bnbBusdFarm, ...poolsWithDifferentFarmToken])
-      : []
+    // const poolsWithDifferentFarmToken =
+    //   activePriceHelperLpsConfig.length > 0 ? await fetchFarms(priceHelperLpsConfig) : []
+    // const farmsData = getState().farms.data
+    // const bnbBusdFarm =
+    //   activePriceHelperLpsConfig.length > 0
+    //     ? farmsData.find((farm) => farm.token.symbol === 'BUSD' && farm.quoteToken.symbol === 'WBNB')
+    //     : null
+    // const farmsWithPricesOfDifferentTokenPools = bnbBusdFarm
+    //   ? getFarmsPrices([bnbBusdFarm, ...poolsWithDifferentFarmToken])
+    //   : []
 
-    const prices = getTokenPricesFromFarm([...farmsData, ...farmsWithPricesOfDifferentTokenPools])
+    // const prices = getTokenPricesFromFarm([...farmsData])
 
     const liveData = poolsConfig.map((pool) => {
       const blockLimit = blockLimits.find((entry) => entry.sousId === pool.sousId)
@@ -165,11 +163,11 @@ export const fetchPoolsPublicDataAsync = (currentBlockNumber: number) => async (
       const isPoolEndBlockExceeded = currentBlock > 0 && blockLimit ? currentBlock > Number(blockLimit.endBlock) : false
       const isPoolFinished = pool.isFinished || isPoolEndBlockExceeded
 
-      const stakingTokenAddress = pool.stakingToken.address ? pool.stakingToken.address.toLowerCase() : null
-      const stakingTokenPrice = stakingTokenAddress ? prices[stakingTokenAddress] : 0
+      // const stakingTokenAddress = pool.stakingToken.address ? pool.stakingToken.address.toLowerCase() : null
+      const stakingTokenPrice =  0
 
-      const earningTokenAddress = pool.earningToken.address ? pool.earningToken.address.toLowerCase() : null
-      const earningTokenPrice = earningTokenAddress ? prices[earningTokenAddress] : 0
+      // const earningTokenAddress = pool.earningToken.address ? pool.earningToken.address.toLowerCase() : null
+      const earningTokenPrice =  0
       const apr = !isPoolFinished
         ? getPoolApr(
             stakingTokenPrice,

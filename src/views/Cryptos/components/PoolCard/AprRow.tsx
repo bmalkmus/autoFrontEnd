@@ -23,9 +23,9 @@ const AprRow: React.FC<AprRowProps> = ({ pool, stakedBalance, performanceFee = 0
 
   return (
     <Flex alignItems="center" justifyContent="space-between">
-      {/* {tooltipVisible && tooltip} */}
-      {/* <TooltipText ref={targetRef}>{vaultKey ? `${t('APY')}:` : `${t('APR')}:`}</TooltipText> */}
-      {/* <Apr pool={pool} stakedBalance={stakedBalance} performanceFee={performanceFee} showIcon={showIcon} /> */}
+      {tooltipVisible && tooltip}
+      <TooltipText ref={targetRef}>{vaultKey ? `${t('APY')}:` : `${t('APR')}:`}</TooltipText>
+       <Apr pool={pool} stakedBalance={stakedBalance} performanceFee={performanceFee} showIcon={showIcon} />
     </Flex>
   )
 }

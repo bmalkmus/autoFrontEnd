@@ -5,7 +5,8 @@ import tokens from 'config/constants/tokens'
 import { useTranslation } from 'contexts/Localization'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
 import { useEffect, useState } from 'react'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+// import { usePriceCakeBusd } from 'state/farms/hooks'
+import BigNumber from 'bignumber.js'
 import styled from 'styled-components'
 import { formatBigNumber, formatLocalisedCompactNumber } from 'utils/formatBalance'
 import { multicallv2 } from 'utils/multicall'
@@ -79,7 +80,7 @@ const CakeDataRow = () => {
       refreshInterval: SLOW_INTERVAL,
     },
   )
-  const cakePriceBusd = usePriceCakeBusd()
+  const cakePriceBusd = new BigNumber(0)
   const mcap = cakePriceBusd.times(cakeSupply)
   const mcapString = formatLocalisedCompactNumber(mcap.toNumber())
 

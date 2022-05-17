@@ -18,7 +18,9 @@ const AprLabelContainer = styled(Flex)`
 export const StakingApy = memo(({ pool }: { pool: DeserializedPool }) => {
   const { t } = useTranslation()
 
-  const { flexibleApy, lockedApy } = useVaultApy()
+  // const { flexibleApy, lockedApy } = useVaultApy()
+
+  const lockedApy = "400%"
 
   const [onPresentFlexibleApyModal] = useModal(<VaultRoiCalculatorModal pool={pool} />)
 
@@ -26,7 +28,7 @@ export const StakingApy = memo(({ pool }: { pool: DeserializedPool }) => {
 
   return (
     <LightGreyCard>
-      <Flex alignItems="center" justifyContent="space-between">
+      {/* <Flex alignItems="center" justifyContent="space-between">
         <Text color="textSubtle" textTransform="uppercase" bold fontSize="12px">
           {t('Flexible')} APY:
         </Text>
@@ -50,7 +52,7 @@ export const StakingApy = memo(({ pool }: { pool: DeserializedPool }) => {
         ) : (
           <Skeleton width="80px" height="16px" />
         )}
-      </Flex>
+      </Flex> */}
       <Flex alignItems="center" justifyContent="space-between">
         <Text color="textSubtle" textTransform="uppercase" bold fontSize="12px">
           {t('Locked')} APY:
@@ -62,7 +64,7 @@ export const StakingApy = memo(({ pool }: { pool: DeserializedPool }) => {
             </Text>
             <AprLabelContainer alignItems="center">
               <Balance fontSize="16px" value={parseFloat(lockedApy)} decimals={2} unit="%" bold />
-              <Button
+              {/* <Button
                 onClick={(e) => {
                   e.stopPropagation()
                   onPresentLockedApyModal()
@@ -74,7 +76,7 @@ export const StakingApy = memo(({ pool }: { pool: DeserializedPool }) => {
                 marginLeft="4px"
               >
                 <CalculateIcon color="textSubtle" width="20px" />
-              </Button>
+              </Button> */}
             </AprLabelContainer>
           </FlexGap>
         ) : (

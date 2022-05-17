@@ -7,7 +7,7 @@ import { useTranslation } from 'contexts/Localization'
 import { useVaultApy } from 'hooks/useVaultApy'
 import { BalanceWithLoading } from 'components/Balance'
 import Divider from 'components/Divider'
-import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
+// import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
 import isUndefinedOrNull from 'utils/isUndefinedOrNull'
 import { getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
 import BurningCountDown from './Common/BurningCountDown'
@@ -35,7 +35,8 @@ const LockedStakingApy: React.FC<LockedStakingApyPropsType> = ({ stakingToken, s
 
   const currentLockedAmount = getBalanceNumber(currentLockedAmountAsBigNumber)
 
-  const usdValueStaked = useBUSDCakeAmount(currentLockedAmount)
+  // const usdValueStaked = useBUSDCakeAmount(currentLockedAmount)
+  const usdValueStaked = 0
 
   const { weekDuration, lockEndDate, secondDuration, remainingTime } = useUserDataInVaultPresenter({
     lockStartTime: userData?.lockStartTime,

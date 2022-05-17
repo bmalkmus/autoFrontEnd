@@ -9,13 +9,13 @@ import Hero from './components/Hero'
 import { swapSectionData, earnSectionData, cakeSectionData } from './components/SalesSection/data'
 import MetricsSection from './components/MetricsSection'
 import SalesSection from './components/SalesSection'
-import WinSection from './components/WinSection'
+// import WinSection from './components/WinSection'
 import FarmsPoolsRow from './components/FarmsPoolsRow'
 import Footer from './components/Footer'
 import CakeDataRow from './components/CakeDataRow'
 import { WedgeTopLeft, InnerWedgeWrapper, OuterWedgeWrapper, WedgeTopRight } from './components/WedgeSvgs'
-import UserBanner from './components/UserBanner'
-import MultipleBanner from './components/Banners/MultipleBanner'
+// import UserBanner from './components/UserBanner'
+// import MultipleBanner from './components/Banners/MultipleBanner'
 import Cryptos from '../Cryptos'
 
 const StyledHeroSection = styled(PageSection)`
@@ -68,7 +68,7 @@ const Home: React.FC = () => {
       >
         {account && (
           <UserBannerWrapper>
-            <UserBanner />
+            {/* <UserBanner /> */}
           </UserBannerWrapper>
         )}
         {/* <MultipleBanner /> */}

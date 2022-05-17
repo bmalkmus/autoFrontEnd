@@ -4,10 +4,8 @@ import { NextLinkFromReactRouter } from 'components/NextLink'
 import { Menu as UikitMenu } from 'uikit'
 import { languageList } from 'config/localization/languages'
 import { useTranslation } from 'contexts/Localization'
-import PhishingWarningBanner from 'components/PhishingWarningBanner'
+
 import useTheme from 'hooks/useTheme'
-import { usePriceCakeBusd } from 'state/farms/hooks'
-import { usePhishingBannerManager } from 'state/user/hooks'
 import UserMenu from './UserMenu'
 import { useMenuItems } from './hooks/useMenuItems'
 import GlobalSettings from './GlobalSettings'
@@ -16,10 +14,8 @@ import { footerLinks } from './config/footerConfig'
 
 const Menu = (props) => {
   const { isDark, setTheme } = useTheme()
-  const cakePriceUsd = usePriceCakeBusd()
   const { currentLanguage, setLanguage, t } = useTranslation()
   const { pathname } = useRouter()
-  const [showPhishingWarningBanner] = usePhishingBannerManager()
 
   const menuItems = useMenuItems()
 
@@ -43,7 +39,7 @@ const Menu = (props) => {
       currentLang={currentLanguage.code}
       langs={languageList}
       setLang={setLanguage}
-      cakePriceUsd={cakePriceUsd.toNumber()}
+      // cakePriceUsd={cakePriceUsd.toNumber()}
       links={menuItems}
       subLinks={activeMenuItem?.hideSubNav ? [] : activeMenuItem?.items}
       footerLinks={footerLinks(t)}

@@ -21,17 +21,17 @@ export const VaultStakeButtonGroup = ({
   return (
     <Box width="100%">
       <FlexGap gap="12px">
-        <Button style={{ flex: 1 }} onClick={onFlexibleClick}>
+        {/* <Button style={{ flex: 1 }} onClick={onFlexibleClick}>
           {t('Flexible')}
-        </Button>
+        </Button> */}
         <Button style={{ flex: 1 }} onClick={onLockedClick}>
           {t('Locked')}
         </Button>
       </FlexGap>
       {tooltipVisible && tooltip}
-      <TooltipText mt="16px" small ref={targetRef}>
+      {/* <TooltipText mt="16px" small ref={targetRef}>
         {t('What’s the difference?')}
-      </TooltipText>
+      </TooltipText> */}
     </Box>
   )
 }

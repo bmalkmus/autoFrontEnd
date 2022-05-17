@@ -23,9 +23,9 @@ const CakeVaultCardActions: React.FC<{
   const { t } = useTranslation()
   const stakingTokenBalance = userData?.stakingTokenBalance ? new BigNumber(userData.stakingTokenBalance) : BIG_ZERO
 
-  // const { isVaultApproved, setLastUpdated } = useCheckVaultApprovalStatus()
-  const { setLastUpdated } = useCheckVaultApprovalStatus()
-  const isVaultApproved = true
+  const { isVaultApproved, setLastUpdated } = useCheckVaultApprovalStatus()
+  // const { setLastUpdated } = useCheckVaultApprovalStatus()
+  // const isVaultApproved = true
 
   return (
     <Flex flexDirection="column">
@@ -45,7 +45,7 @@ const CakeVaultCardActions: React.FC<{
             bold
             fontSize="12px"
           >
-            {accountHasSharesStaked ? t('Staked') : `${stakingToken.symbol}`}
+            {accountHasSharesStaked ? t('Staked') : `Crytos`}
           </InlineText>
         </Box>
         {isVaultApproved ? (

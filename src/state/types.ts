@@ -149,6 +149,16 @@ export interface DeserializedPool extends DeserializedPoolConfig, CorePoolProps 
     stakedBalance: BigNumber
     pendingReward: BigNumber
   }
+  fees?: {
+      performanceFee: number,
+      performanceFeeAsDecimal: number,
+      withdrawalFee:  number,
+      withdrawalFeePeriod: number,
+  }
+  pricePerFullShare?: BigNumber
+  totalCakeInVault?: BigNumber
+  totalLockedAmount?: BigNumber,
+  totalShares?: BigNumber,
 }
 
 export interface SerializedPool extends SerializedPoolConfig, CorePoolProps {

@@ -26,10 +26,12 @@ const MaxStakeRow: React.FC<MaxStakeRowProps> = ({
 }) => {
   const { t } = useTranslation()
 
+
   return (
     <Flex flexDirection="column">
       <Flex justifyContent="space-between" alignItems="center">
         <Text small={small}>{t('Max. stake per user')}:</Text>
+        {/* <Text small={small}>{`${getFullDisplayBalance(stakingLimit, stakingToken.decimals, 0)} ${ */}
         <Text small={small}>{`${getFullDisplayBalance(stakingLimit, stakingToken.decimals, 0)} ${
           stakingToken.symbol
         }`}</Text>

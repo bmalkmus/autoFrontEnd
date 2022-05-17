@@ -6,7 +6,7 @@ import BigNumber from 'bignumber.js'
 import _toNumber from 'lodash/toNumber'
 
 import useTheme from 'hooks/useTheme'
-import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
+// import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
 import { getBalanceNumber, getDecimalAmount, getBalanceAmount } from 'utils/formatBalance'
 
 import RoiCalculatorModalProvider from './RoiCalculatorModalProvider'
@@ -60,8 +60,10 @@ const AddAmountModal: React.FC<AddAmountModalProps> = ({
   )
   const currentLockedAmountAsBalance = getBalanceAmount(currentLockedAmount)
 
-  const usdValueStaked = useBUSDCakeAmount(lockedAmountAsBigNumber.toNumber())
-  const usdValueNewStaked = useBUSDCakeAmount(totalLockedAmount)
+  const usdValueStaked = 0
+  const usdValueNewStaked = 0
+  // const usdValueStaked = useBUSDCakeAmount(lockedAmountAsBigNumber.toNumber())
+  // const usdValueNewStaked = useBUSDCakeAmount(totalLockedAmount)
 
   const prepConfirmArg = useCallback(
     () => ({

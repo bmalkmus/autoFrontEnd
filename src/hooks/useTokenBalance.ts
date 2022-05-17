@@ -4,6 +4,7 @@ import tokens from 'config/constants/tokens'
 import { FAST_INTERVAL, SLOW_INTERVAL } from 'config/constants'
 import { BigNumber as EthersBigNumber } from '@ethersproject/bignumber'
 import { Zero } from '@ethersproject/constants'
+import { StaticJsonRpcProvider } from '@ethersproject/providers'
 import useSWR from 'swr'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { simpleRpcProvider } from 'utils/providers'
@@ -15,7 +16,6 @@ const useTokenBalance = (tokenAddress: string) => {
 
   const contract = useTokenContract(tokenAddress, false)
   // eslint-disable-next-line no-console
-  console.log('useTokenBalance contract', contract)
   const { data, status, ...rest } = useSWRContract(
     account
       ? {
@@ -28,7 +28,6 @@ const useTokenBalance = (tokenAddress: string) => {
       refreshInterval: FAST_INTERVAL,
     },
   )
-
   return {
     ...rest,
     fetchStatus: status,
@@ -55,9 +54,12 @@ export const useBurnedBalance = (tokenAddress: string) => {
 }
 
 export const useGetBnbBalance = () => {
-  const { account } = useWeb3React()
-  const { status, data, mutate } = useSWR([account, 'bnbBalance'], async () => {
-    return simpleRpcProvider.getBalance(account)
+  const { account, chainId } = useWeb3React()
+  const { status, data, mutate } = useSWR([account, 'nativeBalance'], async () => {
+    const provider = new StaticJsonRpcProvider('https://rinkeby.infura.io/v3/a52a2d3c60014e68aa5a8029b38d7910')
+    const balance = chainId === 4 ? await provider.getBalance(account) : await simpleRpcProvider.getBalance(account)
+    // const balance = await provider.getBalance(account)
+    return balance
   })
 
   return { balance: data || Zero, fetchStatus: status, refresh: mutate }

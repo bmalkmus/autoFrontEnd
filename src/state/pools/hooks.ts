@@ -13,7 +13,7 @@ import {
   fetchPoolsStakingLimitsAsync,
 } from '.'
 import { DeserializedPool, VaultKey } from '../types'
-import { fetchFarmsPublicDataAsync } from '../farms'
+// import { fetchFarmsPublicDataAsync } from '../farms'
 import {
   poolsWithUserDataLoadingSelector,
   makePoolWithUserDataLoadingSelector,
@@ -21,25 +21,25 @@ import {
   poolsWithVaultSelector,
 } from './selectors'
 
-export const useFetchPublicPoolsData = () => {
-  const dispatch = useAppDispatch()
+// export const useFetchPublicPoolsData = () => {
+//   const dispatch = useAppDispatch()
 
-  useSlowRefreshEffect(
-    (currentBlock) => {
-      const fetchPoolsDataWithFarms = async () => {
-        const activeFarms = farmsConfig.filter((farm) => farm.pid !== 0)
-        await dispatch(fetchFarmsPublicDataAsync(activeFarms.map((farm) => farm.pid)))
-        batch(() => {
-          dispatch(fetchPoolsPublicDataAsync(currentBlock))
-          dispatch(fetchPoolsStakingLimitsAsync())
-        })
-      }
+//   useSlowRefreshEffect(
+//     (currentBlock) => {
+//       const fetchPoolsDataWithFarms = async () => {
+//         const activeFarms = farmsConfig.filter((farm) => farm.pid !== 0)
+//         await dispatch(fetchFarmsPublicDataAsync(activeFarms.map((farm) => farm.pid)))
+//         batch(() => {
+//           dispatch(fetchPoolsPublicDataAsync(currentBlock))
+//           dispatch(fetchPoolsStakingLimitsAsync())
+//         })
+//       }
 
-      fetchPoolsDataWithFarms()
-    },
-    [dispatch],
-  )
-}
+//       fetchPoolsDataWithFarms()
+//     },
+//     [dispatch],
+//   )
+// }
 
 export const useFetchUserPools = (account) => {
   const dispatch = useAppDispatch()

@@ -2,7 +2,7 @@ import { Flex, Text, IconButton, AddIcon, MinusIcon, useModal, Skeleton, Box } f
 import BigNumber from 'bignumber.js'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { DeserializedPool } from 'state/types'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+// import { usePriceCakeBusd } from 'state/farms/hooks'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import Balance from 'components/Balance'
 import NotEnoughTokensModal from '../../PoolCard/Modals/NotEnoughTokensModal'
@@ -24,7 +24,7 @@ const HasSharesActions: React.FC<HasStakeActionProps> = ({ pool, stakingTokenBal
 
   const { stakingToken } = pool
 
-  const cakePriceBusd = usePriceCakeBusd()
+  const cakePriceBusd = new BigNumber(0)
   const stakedDollarValue = cakePriceBusd.gt(0)
     ? getBalanceNumber(cakeAsBigNumber.multipliedBy(cakePriceBusd), stakingToken.decimals)
     : 0

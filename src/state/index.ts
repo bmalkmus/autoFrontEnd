@@ -13,22 +13,15 @@ import {
   createMigrate,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import burn from './burn/reducer'
-import farmsReducer from './farms'
-import farmsReducerV1 from './farmsV1'
+// import burn from './burn/reducer'
 import { updateVersion } from './global/actions'
-import infoReducer from './info'
 import lists from './lists/reducer'
-import lotteryReducer from './lottery'
-import mint from './mint/reducer'
-import multicall from './multicall/reducer'
-import nftMarketReducer from './nftMarket/reducer'
+// import mint from './mint/reducer'
+// import multicall from './multicall/reducer'
 import poolsReducer from './pools'
-import predictionsReducer from './predictions'
-import swap from './swap/reducer'
+// import swap from './swap/reducer'
 import transactions from './transactions/reducer'
 import user from './user/reducer'
-import limitOrders from './limitOrders/reducer'
 
 const PERSISTED_KEYS: string[] = ['user', 'transactions']
 
@@ -69,23 +62,14 @@ const ListsConfig = {
 const persistedReducer = persistReducer(
   persistConfig,
   combineReducers({
-    farms: farmsReducer,
-    farmsV1: farmsReducerV1,
     pools: poolsReducer,
-    predictions: predictionsReducer,
-    lottery: lotteryReducer,
-    info: infoReducer,
-    nftMarket: nftMarketReducer,
-
-    limitOrders,
-
     // Exchange
     user,
     transactions,
-    swap,
-    mint,
-    burn,
-    multicall,
+    // swap,
+    // mint,
+    // burn,
+    // multicall,
     lists: persistReducer(ListsConfig, lists),
   }),
 )

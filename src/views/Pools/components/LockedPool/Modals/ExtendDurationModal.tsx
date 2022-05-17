@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 import { Modal, Box } from '@pancakeswap/uikit'
 import _noop from 'lodash/noop'
 import useTheme from 'hooks/useTheme'
-import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
+// import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
 import { MAX_LOCK_DURATION } from 'config/constants/pools'
 import { useTranslation } from 'contexts/Localization'
 import BigNumber from 'bignumber.js'
@@ -24,7 +24,8 @@ const ExtendDurationModal: React.FC<ExtendDurationModal> = ({
   const { theme } = useTheme()
   const { t } = useTranslation()
 
-  const usdValueStaked = useBUSDCakeAmount(currentLockedAmount)
+  // const usdValueStaked = useBUSDCakeAmount(currentLockedAmount)
+  const usdValueStaked = 0
 
   const validator = useCallback(
     ({ duration }) => {

@@ -12,6 +12,8 @@ export type TranslatableText =
 export interface Address {
   97?: string
   56: string
+  4?: string
+  1?: string
 }
 
 export interface SerializedToken {
@@ -78,6 +80,15 @@ interface FarmConfigBaseProps {
   }
 }
 
+export interface CryptosToken {
+    address: string
+    chainId: number
+    decimals: number
+    name?: string
+    projectLink?: string
+    symbol?: string
+}
+
 export interface SerializedFarmConfig extends FarmConfigBaseProps {
   token: SerializedToken
   quoteToken: SerializedToken
@@ -106,8 +117,8 @@ export interface SerializedPoolConfig extends PoolConfigBaseProps {
 }
 
 export interface DeserializedPoolConfig extends PoolConfigBaseProps {
-  earningToken: Token
-  stakingToken: Token
+  earningToken: CryptosToken
+  stakingToken: CryptosToken
 }
 
 export type Images = {

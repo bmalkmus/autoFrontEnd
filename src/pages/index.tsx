@@ -4,7 +4,7 @@ import { gql } from 'graphql-request'
 import { GetStaticProps } from 'next'
 import { SWRConfig } from 'swr'
 import { bitQueryServerClient, infoServerClient } from 'utils/graphql'
-import { getBlocksFromTimestamps } from 'views/Info/hooks/useBlocksFromTimestamps'
+// import { getBlocksFromTimestamps } from 'views/Info/hooks/useBlocksFromTimestamps'
 import { getCakeVaultAddress } from 'utils/addressHelpers'
 import { getCakeContract } from 'utils/contractHelpers'
 import { formatEther } from '@ethersproject/units'
@@ -49,39 +49,39 @@ export const getStaticProps: GetStaticProps = async () => {
     tvl,
   }
 
-  if (process.env.SF_HEADER) {
-    try {
-      const [days30AgoBlock] = await getBlocksFromTimestamps([getUnixTime(days30Ago)])
+  // if (process.env.SF_HEADER) {
+  //   try {
+  //     const [days30AgoBlock] = await getBlocksFromTimestamps([getUnixTime(days30Ago)])
 
-      if (!days30AgoBlock) {
-        throw new Error('No block found for 30 days ago')
-      }
+  //     if (!days30AgoBlock) {
+  //       throw new Error('No block found for 30 days ago')
+  //     }
 
-      const totalTx = await infoServerClient.request(totalTxQuery, {
-        id: FACTORY_ADDRESS,
-      })
-      const totalTx30DaysAgo = await infoServerClient.request(totalTxQuery, {
-        block: {
-          number: days30AgoBlock.number,
-        },
-        id: FACTORY_ADDRESS,
-      })
+  //     const totalTx = await infoServerClient.request(totalTxQuery, {
+  //       id: FACTORY_ADDRESS,
+  //     })
+  //     const totalTx30DaysAgo = await infoServerClient.request(totalTxQuery, {
+  //       block: {
+  //         number: days30AgoBlock.number,
+  //       },
+  //       id: FACTORY_ADDRESS,
+  //     })
 
-      if (
-        totalTx?.pancakeFactory?.totalTransactions &&
-        totalTx30DaysAgo?.pancakeFactory?.totalTransactions &&
-        parseInt(totalTx.pancakeFactory.totalTransactions) > parseInt(totalTx30DaysAgo.pancakeFactory.totalTransactions)
-      ) {
-        results.totalTx30Days =
-          parseInt(totalTx.pancakeFactory.totalTransactions) -
-          parseInt(totalTx30DaysAgo.pancakeFactory.totalTransactions)
-      }
-    } catch (error) {
-      if (process.env.NODE_ENV === 'production') {
-        console.error('Error when fetching total tx count', error)
-      }
-    }
-  }
+  //     if (
+  //       totalTx?.pancakeFactory?.totalTransactions &&
+  //       totalTx30DaysAgo?.pancakeFactory?.totalTransactions &&
+  //       parseInt(totalTx.pancakeFactory.totalTransactions) > parseInt(totalTx30DaysAgo.pancakeFactory.totalTransactions)
+  //     ) {
+  //       results.totalTx30Days =
+  //         parseInt(totalTx.pancakeFactory.totalTransactions) -
+  //         parseInt(totalTx30DaysAgo.pancakeFactory.totalTransactions)
+  //     }
+  //   } catch (error) {
+  //     if (process.env.NODE_ENV === 'production') {
+  //       console.error('Error when fetching total tx count', error)
+  //     }
+  //   }
+  // }
 
   const usersQuery = gql`
     query userCount($since: ISO8601DateTime, $till: ISO8601DateTime) {

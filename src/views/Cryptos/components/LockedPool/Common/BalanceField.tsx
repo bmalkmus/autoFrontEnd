@@ -12,7 +12,7 @@ const StyledButton = styled(Button)`
 `
 
 interface PropsType {
-  stakingAddress: string
+  stakingAddress?: string
   stakingSymbol: string
   stakingDecimals: number
   lockedAmount: string
@@ -23,7 +23,7 @@ interface PropsType {
 }
 
 const BalanceField: React.FC<PropsType> = ({
-  stakingAddress,
+  // stakingAddress,
   stakingSymbol,
   stakingDecimals,
   lockedAmount,
@@ -70,17 +70,17 @@ const BalanceField: React.FC<PropsType> = ({
     <>
       <Flex alignItems="center" justifyContent="space-between" mb="8px">
         <Text color="textSubtle" textTransform="uppercase" bold fontSize="12px">
-          {t('CAKE to lock')}
+          {t('CRYPTOS to lock')}
         </Text>
         <Flex alignItems="center" minWidth="70px">
-          <Image src={`/images/tokens/${stakingAddress}.png`} width={24} height={24} alt={stakingSymbol} />
+          <Image src="/images/tokens/CryptosToken.svg" width={24} height={24} alt={stakingSymbol} />
           <Text ml="4px" bold>
             {stakingSymbol}
           </Text>
         </Flex>
       </Flex>
       <BalanceInput
-        isWarning={userNotEnoughCake}
+        // isWarning={userNotEnoughCake}
         value={lockedAmount}
         onUserInput={handleStakeInputChange}
         currencyValue={`~${usedValueStaked || 0} USD`}
